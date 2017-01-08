@@ -5,6 +5,8 @@
  */
 package org.kontza.atmospi;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  * @author juharuotsalainen
@@ -12,12 +14,14 @@ package org.kontza.atmospi;
 public class Settings {
 
     // How far into the past should data be loaded (in seconds)? Default to 1 week.
+    @JsonProperty("range_seconds")
     private int rangeSeconds;
 
     // The number of digits after the decimal place that will be stored.
     private int precision;
 
     // Temperature unit of measure (C or F).
+    @JsonProperty("t_unit")
     private String temperatureUnit;
 
     public Settings(int rangeSeconds, int precision, String temperatureUnit) {
