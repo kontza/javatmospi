@@ -34,7 +34,7 @@ public class AtmospiLatestTemperatureController {
             logger.info("Device: {}", d.getLabel());
             Temperature temperature = temperatureRepository.findTop1ByDeviceIdOrderByTimestampDesc(d.getDeviceid());
             ArrayList<String> values = new ArrayList<>();
-            values.add(String.format("%d", temperature.getTimestamp()));
+            values.add(String.format("%d", 1000 * temperature.getTimestamp()));
             if (settings.getTemperatureUnit().equals(AtmospiSettings.TEMP_C)) {
                 values.add(String.format("%f", temperature.getC()));
             } else {

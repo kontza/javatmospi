@@ -29,13 +29,13 @@ public class AtmospiApplicationTests {
 
     // These values are from the log.sqlite -file in this repo.
     private final String latestDeviceLabel = "28-000003ea01f5";
-    private final long latestTimestamp = 1477576501000L;
+    private final long latestTimestamp = 1477576501L;
     private final double latestTemperature = 8.94;
     private final double alphaTemperature = 21.5;
     private final double omegaTemperature = 21.5;
     private final String onlyDeviceId = "1";
-    private final long alpha = 1460767801000L;
-    private final long omega = 1460770501000L;
+    private final long alpha = 1460767801L;
+    private final long omega = 1460770501L;
     private final int rangeCount = 10;
     private final int totalCount = 55078;
     private final HashMap<String, Long> parms = new HashMap<>();
@@ -70,7 +70,7 @@ public class AtmospiApplicationTests {
         assertTrue(keys.contains(latestDeviceLabel));
         JSONArray array = o.optJSONArray(latestDeviceLabel);
         // The first item is the timestamp.
-        assertEquals(array.getLong(0), latestTimestamp);
+        assertEquals(array.getLong(0), 1000 * latestTimestamp);
         // The second item is the temperature in centigrade.
         assertEquals(array.getDouble(1), latestTemperature, 0);
     }
@@ -101,13 +101,13 @@ public class AtmospiApplicationTests {
         assertEquals(rangeCount, o.length());
         JSONArray array = o.getJSONArray(0);
         // The first item is the timestamp.
-        assertEquals(array.getLong(0), alpha);
+        assertEquals(array.getLong(0), 1000 * alpha);
         // The second item is the temperature in centigrade.
         assertEquals(array.getDouble(1), alphaTemperature, 0);
         // Check the last item.
         array = o.getJSONArray(o.length() - 1);
         // The first item is the timestamp.
-        assertEquals(array.getLong(0), omega);
+        assertEquals(array.getLong(0), 1000 * omega);
         // The second item is the temperature in centigrade.
         assertEquals(array.getDouble(1), omegaTemperature, 0);
     }
