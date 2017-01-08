@@ -1,4 +1,11 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/atmospi
+    username: atmospi
+    password: atmospi
+  jpa:
+    hibernate:
+      ddl-auto: none
   profiles:
     active: default
 logging:
@@ -25,6 +32,6 @@ spring:
     dev
 logging:
   level:
-    org: INFO
+    org: error
   pattern:
     console: "%d %-5level %logger : %msg%n"
