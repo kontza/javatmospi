@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: default
+logging:
+  level:
+    org.kontza: DEBUG
+atmospi:
+  settings:
+    db: N/A
+    t_unit: C
+    precision: 2
+    range_seconds: 604800
+---
+spring:
+  profiles:
+    default
+logging:
+  level:
+    org: ERROR
+  pattern:
+    console: "%-5level %logger : %msg%n"
+---
+spring:
+  profiles:
+    dev
+logging:
+  level:
+    org: INFO
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
