@@ -29,13 +29,13 @@ public class AtmospiApplicationTests {
 
     // These values are from the log.sqlite -file in this repo.
     private final String latestDeviceLabel = "28-000003ea01f5";
-    private final int latestTimestamp = 1477576501;
+    private final long latestTimestamp = 1477576501000L;
     private final double latestTemperature = 8.94;
     private final double alphaTemperature = 21.5;
     private final double omegaTemperature = 21.5;
     private final String onlyDeviceId = "1";
-    private final long alpha = 1460767801;
-    private final long omega = 1460770501;
+    private final long alpha = 1460767801000L;
+    private final long omega = 1460770501000L;
     private final int rangeCount = 10;
     private final int totalCount = 55078;
     private final HashMap<String, Long> parms = new HashMap<>();
