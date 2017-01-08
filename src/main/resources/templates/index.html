@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <script th:inline="javascript">
+/*<![CDATA[*/
+
+    var atmosPiConf = {subDomain: [[${subDomain}]] };
+
+/*]]>*/
+  </script>
+
+<title>Atmospi (Spring Boot)</title>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="//code.highcharts.com/stock/highstock.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/atmospi.css}"></link>
+</head>
+
+<body>
+  <h1>Atmospi (Go)</h1>
+  <div id="summary"></div>
+  <div id="graph"></div>
+  <div id="footer">Powered by JavAtmospi - <a href="http://github.org/kontza/javatmospi">http://github.org/kontza/javatmospi</a><br /> With
+    UI-code originating from - <a href="http://github.org/mstenta/atmospi">http://github.org/mstenta/atmospi</a></div>
+  <script th:src="@{/atmospi.js}"></script>
+
+</body>
+
+</html>
