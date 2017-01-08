@@ -5,7 +5,10 @@
   <script th:inline="javascript">
 /*<![CDATA[*/
 
-    var atmosPiConf = {subDomain: [[${subDomain}]] };
+    var atmosPiConf = {subDomain: [[${subDomain}]],
+      oldestTimestamp: [[${oldestTimestamp}]],
+      latestTimestamp: [[${latestTimestamp}]]
+    };
 
 /*]]>*/
   </script>
@@ -17,7 +20,7 @@
 </head>
 
 <body>
-  <h1>Atmospi (Go)</h1>
+  <h1>Atmospi (Spring Boot)</h1>
   <div id="summary"></div>
   <div id="graph"></div>
   <div id="footer">Powered by JavAtmospi - <a href="http://github.org/kontza/javatmospi">http://github.org/kontza/javatmospi</a><br /> With
