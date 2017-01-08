@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AtmospiLatestTemperatureController {
 
-    private Logger logger = LoggerFactory.getLogger(AtmospiSettingsController.class.getName());
+    private Logger logger = LoggerFactory.getLogger(AtmospiLatestTemperatureController.class.getName());
 
     @Autowired
     private AtmospiSettings settings;
@@ -27,7 +27,7 @@ public class AtmospiLatestTemperatureController {
     private TemperatureRepository temperatureRepository;
 
     @RequestMapping("/data/latest/temperature")
-    public String settings() {
+    public String latest() throws Exception {
         JSONObject retVal = new JSONObject();
         Iterable<Device> devices = deviceRepository.findAll();
         for (Device d : devices) {
