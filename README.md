@@ -35,7 +35,7 @@ Run the generated JAR:
 
     $ java -jar ./target/atmospi-1.0.0-SNAPSHOT.jar
     
-Next, open the following URL in your browser: http://localhost:8080
+Next, open the following URL in your browser: [http://localhost:8080](http://localhost:8080)
 
 # Miscellaneous
 The challenge with this app was to keep it compatible with the data that the original [atmospi](https://github.com/mstenta/atmospi) generates. Especially timestamps were problematic, since they are Unixy seconds-based timestamps in the database, and the front-end JavaScript (and HighCharts) live on millisecond-based timestamps.
