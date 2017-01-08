@@ -6,11 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface DeviceRepository extends CrudRepository<Device, Long> {
 
-    List<Device> findByType(String type);
+    List<Device> findByTypeOrderByDeviceidAsc(String type);
 
-    List<Device> findBySerialId(String serialId);
+    List<Device> findBySerialIdOrderByDeviceidAsc(String serialId);
 
-    List<Device> findByLabel(String label);
+    List<Device> findByLabelOrderByDeviceidAsc(String label);
 
-    public List<Device> findByTypeIn(ArrayList<String> temperatureDevices);
+    public List<Device> findByTypeInOrderByDeviceidAsc(ArrayList<String> temperatureDevices);
 }

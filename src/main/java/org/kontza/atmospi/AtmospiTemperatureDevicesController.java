@@ -32,7 +32,7 @@ public class AtmospiTemperatureDevicesController {
         temperatureDevices.add("dht11");
         temperatureDevices.add("am2302");
         temperatureDevices.add("ds18b20");
-        List<Device> devices = deviceRepository.findByTypeIn(temperatureDevices);
+        List<Device> devices = deviceRepository.findByTypeInOrderByDeviceidAsc(temperatureDevices);
         for (Device d : devices) {
             logger.info("Device: {}", d.getLabel());
             retVal.put(String.format("%d", d.getDeviceid()), d.getLabel());
