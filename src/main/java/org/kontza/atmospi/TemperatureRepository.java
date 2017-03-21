@@ -17,4 +17,5 @@ public interface TemperatureRepository extends CrudRepository<Temperature, Long>
 
     public Temperature findTop1ByOrderByTimestampAsc();
 
+    public long countByDeviceId(Long deviceId);
 }
