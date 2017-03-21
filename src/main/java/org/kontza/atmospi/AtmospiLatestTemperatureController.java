@@ -1,6 +1,10 @@
 package org.kontza.atmospi;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +35,9 @@ public class AtmospiLatestTemperatureController {
         JSONObject retVal = new JSONObject();
         Iterable<Device> devices = deviceRepository.findAll();
         for (Device d : devices) {
-            logger.info("Device: {}", d.getLabel());
+            logger.info("Device: {}, {}", d.getLabel(), d.getDeviceid());
             Temperature temperature = temperatureRepository.findTop1ByDeviceIdOrderByTimestampDesc(d.getDeviceid());
+            logger.info("Temperature: {}", temperature);
             ArrayList<String> values = new ArrayList<>();
             values.add(String.format("%d", 1000 * temperature.getTimestamp()));
             if (settings.getTemperatureUnit().equals(AtmospiSettings.TEMP_C)) {

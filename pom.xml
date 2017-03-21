@@ -47,8 +47,14 @@
             <artifactId>postgresql</artifactId>
             <version>9.4.1212</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.194</version>
+            <scope>dev</scope>
+        </dependency>
     </dependencies>
-
     <properties>
         <java.version>1.8</java.version>
     </properties>

@@ -28,16 +28,16 @@ public class AtmospiApplicationTests {
     private final Logger logger = LoggerFactory.getLogger(AtmospiApplicationTests.class.getName());
 
     // These values are from the log.sqlite -file in this repo.
-    private final String latestDeviceLabel = "28-000003ea01f5";
+    private final String latestDeviceLabel = "Kasvihuone";
     private final long latestTimestamp = 1477576501L;
     private final double latestTemperature = 8.94;
-    private final double alphaTemperature = 21.5;
-    private final double omegaTemperature = 21.5;
+    private final double alphaTemperature = 9.06;
+    private final double omegaTemperature = 9.0;
     private final String onlyDeviceId = "1";
-    private final long alpha = 1460767801L;
-    private final long omega = 1460770501L;
-    private final int rangeCount = 10;
-    private final int totalCount = 55078;
+    private final long alpha = 1477563601L;
+    private final long omega = 1477570502L;
+    private final int rangeCount = 24;
+    private final int totalCount = 518;
     private final HashMap<String, Long> parms = new HashMap<>();
 
     @Autowired
@@ -68,11 +68,15 @@ public class AtmospiApplicationTests {
         JSONObject o = new JSONObject(entity.getBody());
         Set<String> keys = o.keySet();
         assertTrue(keys.contains(latestDeviceLabel));
+        logger.info(">>> KEYS: {}", keys);
         JSONArray array = o.optJSONArray(latestDeviceLabel);
         // The first item is the timestamp.
         assertEquals(array.getLong(0), 1000 * latestTimestamp);
         // The second item is the temperature in centigrade.
-        assertEquals(array.getDouble(1), latestTemperature, 0);
+        Double d = Double.parseDouble(array.getString(1));
+        logger.info(">>> Converted: {}", d);
+        logger.info(">>> Expected : {}", latestTemperature);
+        assertEquals(d, latestTemperature, 0);
     }
 
     @Test
@@ -103,13 +107,13 @@ public class AtmospiApplicationTests {
         // The first item is the timestamp.
         assertEquals(array.getLong(0), 1000 * alpha);
         // The second item is the temperature in centigrade.
-        assertEquals(array.getDouble(1), alphaTemperature, 0);
+        assertEquals(alphaTemperature, array.getDouble(1), 0);
         // Check the last item.
         array = o.getJSONArray(o.length() - 1);
         // The first item is the timestamp.
         assertEquals(array.getLong(0), 1000 * omega);
         // The second item is the temperature in centigrade.
-        assertEquals(array.getDouble(1), omegaTemperature, 0);
+        assertEquals(omegaTemperature, array.getDouble(1), 0);
     }
 
     @Test

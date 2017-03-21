@@ -1,11 +1,4 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/atmospi
-    username: atmospi
-    password: atmospi
-  jpa:
-    hibernate:
-      ddl-auto: none
   profiles:
     active: default
 logging:
@@ -21,17 +14,35 @@ atmospi:
 spring:
   profiles:
     default
+  datasource:
+    url: jdbc:postgresql://localhost:5432/atmospi
+    username: atmospi
+    password: atmospi
+  jpa:
+    hibernate:
+      ddl-auto: none
 logging:
   level:
-    org: ERROR
+    org: error
   pattern:
     console: "%-5level %logger : %msg%n"
 ---
 spring:
   profiles:
     dev
+  jpa:
+    show_sql: false
+    properties:
+      hibernate:
+        format_sql: false
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;DB_CLOSE_ON_EXIT=false
+    # schema: classpath:/schema.sql
 logging:
   level:
-    org: error
+    org: info
   pattern:
     console: "%d %-5level %logger : %msg%n"
