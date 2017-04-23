@@ -1,7 +1,9 @@
 #!/bin/sh
-createdb atmospi
-gunzip log.sqlite.gz
-pgloader log.sqlite postgresql:///atmospi
-gzip log.sqlite
-psql -d atmospi < create_temperature_id.sql
-psql -d atmospi < create_user.sql
+echo "### Create the database        ###"
+sudo -u postgres createdb atmospi
+echo "### Extract the SQLite data    ###"
+zcat log.sqlite.gz > /tmp/log.sqlite
+echo "### Import the SQLite data     ###"
+sudo -u postgres pgloader /tmp/log.sqlite postgresql:///atmospi
+echo "### Run the post-import tweaks ###"
+sudo -u postgres psql -d atmospi < post_import_tweaks.sql
