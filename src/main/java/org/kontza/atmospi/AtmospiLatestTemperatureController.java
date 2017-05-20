@@ -43,7 +43,6 @@ public class AtmospiLatestTemperatureController {
             }
             retVal.put(d.getLabel(), values);
         }
-        logger.info("RETURN {}", retVal.toString());
         return retVal.toString();
     }
 }
