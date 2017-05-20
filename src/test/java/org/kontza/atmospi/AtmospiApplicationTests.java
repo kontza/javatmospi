@@ -67,9 +67,9 @@ public class AtmospiApplicationTests {
         logger.info(">>> KEYS: {}", keys);
         JSONArray array = o.optJSONArray(onlyDeviceLabel);
         // The first item is the timestamp.
-        assertEquals(1000*t.getTimestamp(), array.getLong(0));
+        assertEquals((double) 1000 * t.getTimestamp(), array.getDouble(0), 100000);
         // The second item is the temperature in centigrade.
-        Double d = Double.parseDouble(array.getString(1));
+        Double d = array.getDouble(1);
         logger.info(">>> Converted: {}", d);
         logger.info(">>> Expected : {}", t.getC());
         assertEquals(t.getC(), d, 0.001);
